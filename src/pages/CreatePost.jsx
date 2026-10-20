@@ -11,14 +11,14 @@ const CreatePost = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const handleSubmitPost = (data) => {
+  const handleCreatePost = (data) => {
     addPost(data);
     navigate("/");
   };
   return (
     <div>
       <h3>Create a New Post</h3>
-      <form onSubmit={handleSubmit(handleSubmitPost)}>
+      <form onSubmit={handleSubmit(handleCreatePost)}>
         <div>
           <label htmlFor="title">Title: </label>
           <input

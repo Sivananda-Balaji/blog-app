@@ -18,8 +18,14 @@ export const PostProvider = (props) => {
     const lastId = posts[posts.length - 1].id;
     setPosts((prev) => [...prev, { ...newPost, id: lastId + 1 }]);
   };
+  const findPostById = (id) => posts.find((post) => post.id === id);
+  const updatePost = (updatedPost) => {
+    setPosts((prev) =>
+      prev.map((post) => (post.id === updatedPost.id ? updatedPost : post)),
+    );
+  };
   return (
-    <PostContext.Provider value={{ posts, addPost }}>
+    <PostContext.Provider value={{ posts, addPost, findPostById, updatePost }}>
       {props.children}
     </PostContext.Provider>
   );
